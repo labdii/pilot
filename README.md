@@ -13,6 +13,11 @@ git clone https://github.com/labdii/pilot
 To setup the python environment we'll use virtualenv
 
 For apt-get based systems
+ ```bash
+ sudo apt-get install python3-pip
+ ```
+
+Then install virtualenv
 
 ```bash
 pip3 install virtualenv
