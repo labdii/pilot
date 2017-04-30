@@ -1,6 +1,3 @@
-import os
-import random
-import string
 from flask import Flask
 from flask import abort
 from flask import session
@@ -15,6 +12,9 @@ from api.users import UserCheck
 from api.users import UserUpdate
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import os
+import random
+import string
 
 app = Flask(__name__)
 api = Api(app)
