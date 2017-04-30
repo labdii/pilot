@@ -47,3 +47,29 @@ pip3 install gunicorn
 # Using just 1 worker. You can replace the 1 for any number of workers
 gunicorn -w1 app:app
 ```
+
+<br>
+
+### Using local script for development
+
+Ensure .env file with environmental variables exists and is placed in the root folder.
+
+#### Example
+
+```
+MONGODB_URI=<mongodb uri>
+MONGODB_DBNAME=<database name>
+```
+
+Grant permissions and run the script
+
+```bash
+sudo chmod +x start_dev.sh
+./start_dev.sh
+```
+
+<br>
+
+### To Do
+
+* Write a build env script
