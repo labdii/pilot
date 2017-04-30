@@ -50,7 +50,7 @@ gunicorn -w1 app:app
 
 <br>
 
-### Using local script for development
+### Using script to start local development server
 
 Ensure .env file with environmental variables exists and is placed in the root folder.
 
