@@ -35,7 +35,7 @@ Now go inside the project folder and install dependencies
 
 ```bash
 cd pilot
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Using script to start local development server
