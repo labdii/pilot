@@ -19,6 +19,8 @@ import string
 app = Flask(__name__)
 api = Api(app)
 
+app.config['DEBUG'] = True
+
 app.config['SECRET_KEY'] = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(50))
 app.config['MONGODB_URI'] = os.environ['MONGODB_URI']
 app.config['MONGODB_DBNAME'] = os.environ['MONGODB_DBNAME']
