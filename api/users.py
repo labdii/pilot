@@ -17,32 +17,47 @@ class UserSignUp(Resource):
 
         not_none = username_req is not None and password_req is not None and role is not None
 
-        if not_none:
-            users = [user for user in self.mongo.db.users.find({"username": username_req})]
+        if "username" in session and "role" in session:
+            if session["role"] == "admin":
 
-            if users.__len__() > 0:
-                return jsonify({
-                    "status": 400,
-                    "msg": "user already exists"
-                })
+                if not_none:
+                    users = [user for user in self.mongo.db.users.find({"username": username_req})]
+
+                    if users.__len__() > 0:
+                        return jsonify({
+                            "status": 400,
+                            "msg": "user already exists"
+                        })
+
+                    else:
+                        new_user = self.mongo.db.users.insert_one({
+                            "username": username_req,
+                            "password": password_req,
+                            "role": role
+                        })
+
+                        return jsonify({
+                            "new_user_id": new_user.inserted_id.__str__(),
+                            "status": 200,
+                            "msg": "User registered successful"
+                        })
+
+                else:
+                    return jsonify({
+                        "status": 400,
+                        "msg": "wrong parameters"
+                    })
 
             else:
-                new_user = self.mongo.db.users.insert_one({
-                    "username": username_req,
-                    "password": password_req,
-                    "role": role
-                })
-
                 return jsonify({
-                    "new_user_id": new_user.inserted_id.__str__(),
-                    "status": 200,
-                    "msg": "User registered successful"
+                    "status": 400,
+                    "msg": "login as admin user"
                 })
 
         else:
             return jsonify({
                 "status": 400,
-                "msg": "wrong parameters"
+                "msg": "not user logged"
             })
 
 
