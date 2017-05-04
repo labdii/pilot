@@ -12,4 +12,5 @@ echo "*** Loading variables..."
 export $(cat .env | xargs)
 echo "*** Starting development server..."
 echo ""
-python app.py
+#python app.py
+gunicorn -w4 app:app -b 0.0.0.0:8080
